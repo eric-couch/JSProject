@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <script src="js/moviesearch.js"></script>
+    <style>
+        /* Navbar using CSS Grid */
+        .navbar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Search Section using Grid */
+        .search-container {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .search-container input {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .search-container button {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Movie Grid Layout */
+        .movie-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Movie Card */
+        .movie-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            display: none; /* Initially hidden */
+            width: 100%;
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        .card-body h6 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-left:10px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#">Movie Search</a>
+        <a href="FavoritesNew.html">Favorite Movies</a>
+    </nav>
+
+    <div class="search-container">
+        <input type="text" id="searchTerm" placeholder="Search for a movie..." />
+        <button class="btn-primary" id="searchbtn">Search</button>
+    </div>
+
+    <div class="movie-list" id="favMovieList">
+        <!-- Movies will be added dynamically here -->
+    </div>
+
+    <div id="movieCard" class="movie-card">
+        <img id="moviePoster" src="https://img.omdbapi.com/?apikey=86c39163&i=tt0816692" />
+        <div class="card-body" id="cardBody">
+            <h6>Interstellar (2014)</h6>
+            <button class="btn-primary" id="favbtn">Add to Favourites</button>
+        </div>
+    </div>
+
+</body>
+</html>

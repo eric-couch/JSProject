@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Movie List</title>
+    <script src="js/favoritemovies.js"></script>
+    <style>
+        /* Navbar using CSS Grid */
+        .navbar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Movie List Grid */
+        .movie-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Movie Card */
+        .movie-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            width: 9rem;
+            padding: 10px;
+            display: none; /* Initially hidden */
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        .card-body h6 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="MovieSearchNew.html">Movie Search</a>
+        <a href="#">Favorite Movies</a>
+    </nav>
+
+    <div class="movie-list" id="favMovieList">
+        <!-- Favorite movies will be dynamically added here -->
+    </div>
+
+    <div id="movieCard" class="movie-card">
+        <img id="moviePoster" src="https://img.omdbapi.com/?apikey=86c39163&i=tt0816692" />
+        <div class="card-body" id="cardBody">
+            <h6>Interstellar (2014)</h6>
+            <p id="genre"></p>
+            <p id="plot"></p>
+        </div>
+    </div>
+
+</body>
+</html>

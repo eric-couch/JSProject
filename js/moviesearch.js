@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const movies = await getMovies();
             console.log(movies);
             const favMovieList = document.getElementById('favMovieList');
-            favMovieList.firstElementChild.innerHTML = '';
+            //favMovieList.firstElementChild.innerHTML = '';
             movies.Search.forEach((movie) => {
                 console.log(movie.Title);
                 BuildMovieCard(movie);
@@ -33,7 +33,8 @@ function BuildMovieCard(movie) {
             UpdateFavoriteMovies(movie);
         });
     }
-    favMovieList.firstElementChild.appendChild(movieCardClone);
+    //favMovieList.firstElementChild.appendChild(movieCardClone);
+    favMovieList.appendChild(movieCardClone);
     movieCardClone.style.display = 'inline';
 }
 

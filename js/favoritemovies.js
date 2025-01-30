@@ -36,7 +36,8 @@ function BuildMovieCard(movie) {
             UpdateFavoriteMovies(movie);
         });
     }
-    favMovieList.firstElementChild.appendChild(movieCardClone);
+    //favMovieList.firstElementChild.appendChild(movieCardClone);
+    favMovieList.appendChild(movieCardClone);
     movieCardClone.style.display = 'inline';
 }
 
