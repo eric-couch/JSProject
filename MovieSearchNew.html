@@ -57,7 +57,7 @@
         /* Movie Grid Layout */
         .movie-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 15px;
             max-width: 1200px;
             margin: 20px auto;
@@ -73,6 +73,7 @@
             text-align: center;
             display: none; /* Initially hidden */
             width: 100%;
+            grid-template-rows: auto 150px;
         }
 
         .movie-card img {
@@ -82,12 +83,17 @@
 
         .card-body {
             padding: 10px;
+            display: grid;
+            height: 8rem;
+            grid-template-rows: auto 50px;
+            /* align-items: end; */
         }
 
         .card-body h6 {
             margin: 0;
             font-size: 14px;
             font-weight: bold;
+            
         }
 
         .btn-primary {
@@ -106,6 +112,27 @@
         .btn-primary:hover {
             background-color: #0056b3;
         }
+
+        .search-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 100vw;
+            background-color: #f8f9fa;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+        }
+        .search-nav div {
+            display: grid;
+            padding: 10px 20px;
+            justify-content: center;
+        }
+        .search-nav div a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
     </style>
 </head>
 <body>
@@ -123,12 +150,19 @@
     <div class="movie-list" id="favMovieList">
         <!-- Movies will be added dynamically here -->
     </div>
+    <!-- add a navigation bar for the list of movies as there are sets of ten at a time -->
+    <div id="searchListNav" class="search-nav" style="visibility: hidden;">
+        <div><a href="#" id="prevBtn">Previous</a></div>
+        <div id="pages"></div>
+        <div><a href="#" id="nextBtn">Next</a></div>
+    </div>
 
     <div id="movieCard" class="movie-card">
-        <img id="moviePoster" src="https://img.omdbapi.com/?apikey=86c39163&i=tt0816692" />
+        <img id="moviePoster" src="https://img.omdbapi.com/?apikey=86c39163&i=tt0816692"
+        onerror="this.onerror=null; this.src='https://placehold.co/200x300?text=Poster Not Found';" />
         <div class="card-body" id="cardBody">
             <h6>Interstellar (2014)</h6>
-            <button class="btn-primary" id="favbtn">Add to Favourites</button>
+            <button class="btn-primary btn-add" id="favbtn">Add</button>
         </div>
     </div>
 

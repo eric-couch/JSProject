@@ -73,11 +73,13 @@
     </div>
 
     <div id="movieCard" class="movie-card">
-        <img id="moviePoster" src="https://img.omdbapi.com/?apikey=86c39163&i=tt0816692" />
+        <img id="moviePoster" src="https://img.omdbapi.com/?apikey=86c39163&i=tt0816692"
+            onerror="this.onerror=null; this.src='https://placehold.co/200x300?text=Poster Not Found';" />
         <div class="card-body" id="cardBody">
             <h6>Interstellar (2014)</h6>
             <p id="genre"></p>
             <p id="plot"></p>
+            <button class="btn-primary" id="removeMovie">Remove</button>
         </div>
     </div>
 

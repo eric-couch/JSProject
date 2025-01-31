@@ -5,6 +5,10 @@ let MoviePoster = "https://img.omdbapi.com/?apikey=86c39163&i="
 
 document.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
+    LoadMovies();
+});
+
+function LoadMovies() {
     let jsonString = localStorage.getItem('favMovieList');
     console.log(jsonString);
     if (jsonString != null) {
@@ -16,7 +20,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             })();
         });
     }
-});
+}
 
 function BuildMovieCard(movie) {
     const { Title, Year, imdbID, Genre, Plot, Ratings } = movie;
@@ -37,8 +41,30 @@ function BuildMovieCard(movie) {
         });
     }
     //favMovieList.firstElementChild.appendChild(movieCardClone);
+    let removeButton = cardBody.querySelector('#removeMovie');
+    if (removeButton != null) {
+        removeButton.addEventListener('click', () => {
+            RemoveMovie(movie);
+        });
+    }
     favMovieList.appendChild(movieCardClone);
     movieCardClone.style.display = 'inline';
+}
+
+function RemoveMovie(movie) {
+    let favMovieList = document.getElementById('favMovieList');
+    favMovieList.innerHTML = '';
+    let jsonString = localStorage.getItem('favMovieList');
+    console.log(jsonString);
+    if (jsonString != null) {
+        let favoriteMovies = JSON.parse(jsonString);
+        let index = favoriteMovies.findIndex((favMovie) => favMovie.imdbID == movie.imdbID);
+        if (index > -1) {
+            favoriteMovies.splice(index, 1);
+            localStorage.setItem('favMovieList', JSON.stringify(favoriteMovies));
+            location.reload();
+        }
+    }
 }
 
 const getMovie = async (imdbId) => {
